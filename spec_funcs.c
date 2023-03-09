@@ -13,9 +13,6 @@
  */
 int print_char(va_list ap)
 {
-	if (va_arg(ap, int) == '\0')
-	{ return (0); }
-
 	putchar(va_arg(ap, int));
 	return (1);
 }
