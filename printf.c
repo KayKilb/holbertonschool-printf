@@ -14,23 +14,23 @@
 
 int _printf(const char *format, ...)
 {
-	va_list = ap;
+	va_list ap;
 	int i = 0, ii = 0, x = 0, sl = 0;
 	spec_t specs[] = {
 		{ "c", print_char },
-		{ "s", print_string }
+		{ "s", print_str }
 	};
+
+	va_start(ap, format);
 
 	if (format == NULL)
 	{ return (0); }
-
-	va_start(ap, format);
 
 	while (format[i])
 	{
 		ii = 0;
 
-		if (format[i] == "%" && x == 0)
+		if (format[i] == '%' && x == 0)
 		{
 			x = 1;
 		}
@@ -38,11 +38,11 @@ int _printf(const char *format, ...)
 		{
 			while (ii < 2)
 			{
-				if (format[i] == specs[ii].spec[0])
+				if (format[i] == specs[ii].spec)
 				{
 					specs[ii].f(ap);
-					sl == sl + specs[ii].f(ap);
-					x == 2;
+					sl = sl + specs[ii].f(ap);
+					x = 2;
 				}
 				ii++;
 			}
@@ -74,17 +74,17 @@ int _printf(const char *format, ...)
 int print_char(va_list ap)
 {
 	putchar(va_arg(ap, char));
-	return (0);
+	return (-1);
 }
 
 /**
- * print_string - prints a string
+ * print_str - prints a string
  *
  * @ap: a variadic argument
  *
  * Return: int
  */
-int print_string(va_list ap)
+int print_str(va_list ap)
 {
 	int sl = 0;
 	char *str;
@@ -97,6 +97,6 @@ int print_string(va_list ap)
 		sl++;
 	}
 
-	sl = sl - 1;
+	sl = sl - 2;
 	return (sl);
 }

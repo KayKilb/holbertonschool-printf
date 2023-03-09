@@ -13,8 +13,11 @@
 typedef struct spec
 {
 	char *spec;
-	int (*f)(int a, int b);
+	int (*f)(va_list);
 } spec_t;
+
+int print_char(va_list ap);
+int print_str(va_list ap);
 
 int _printf(const char *format, ...);
 
