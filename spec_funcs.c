@@ -47,7 +47,7 @@ int print_str(va_list ap)
  *
  * Return: int, number of chars printed
  *
-int print_int(int ap)
-{
-}
+ * int print_int(int ap)
+ * {
+ * }
 */
