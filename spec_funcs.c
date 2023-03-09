@@ -49,8 +49,7 @@ int print_str(va_list ap)
  * @ap: va_list??, arge from printf
  *
  * Return: int, number of chars printed
- *
- * int print_int(int ap)
- * {
- * }
  */
+int print_int(int ap)
+{
+}

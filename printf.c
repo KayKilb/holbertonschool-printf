@@ -17,10 +17,12 @@ int check_spec(va_list ap, char c)
 	int i = 0;
 	spec_t specs[] = {
 		{ "c", print_char },
-		{ "s", print_str }
+		{ "s", print_str },
+		{ "d", print_int },
+		{ "i", print_int }
 	};
 
-	while (i < 2)
+	while (i < 4)
 	{
 		if (*specs[i].spec == c)
 		{ return (specs[i].f(ap)); }
