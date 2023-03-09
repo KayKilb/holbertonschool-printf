@@ -18,8 +18,6 @@ int check_spec(va_list ap, char c)
 	spec_t specs[] = {
 		{ "c", print_char },
 		{ "s", print_str }
-/**		{ "d", print_int },
-		{ "i", print_int } */
 	};
 
 	while (i < 2)
@@ -66,7 +64,7 @@ int _printf(const char *format, ...)
 		}
 		else if (format[i] == '%')
 		{
-			sl += check_spec(ap, format[i + 1]);
+			sl = sl + check_spec(ap, format[i + 1]);
 			i++;
 		}
 		else
@@ -80,5 +78,7 @@ int _printf(const char *format, ...)
 
 	va_end(ap);
 
-	return(sl);
+	printf("%d\n", sl);
+
+	return (sl);
 }
