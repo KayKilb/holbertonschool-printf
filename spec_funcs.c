@@ -13,6 +13,9 @@
  */
 int print_char(va_list ap)
 {
+	if (va_arg(ap, int) == NULL)
+	{ return (0); }
+
 	putchar(va_arg(ap, int));
 	return (1);
 }
