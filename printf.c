@@ -1,6 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <stdarg.h>
 #include "main.h"
+
+/**
+ * check_spec - checks which format specifier and runs the correct function
+ *
+ * @ap: va_list, contains argument from _printf
+ * @c: char, specifier
+ *
+ * Return: int, number of chars printed
+ */
+int check_spec(va_list ap, char c)
+{
+	int i = 0;
+	spec_t specs[] = {
+		{ "c", print_char },
+		{ "s", print_str }
+/**		{ "d", print_int },
+		{ "i", print_int } */
+	};
+
+	while (i < 2)
+	{
+		if (*specs[i].spec == c)
+		{ return (specs[i].f(ap)); }
+
+		i++;
+	}
+
+	putchar('%');
+	putchar(c);
+	return (2);
+}
+
 
 /**
  * _printf - returns the number of characters printed
@@ -15,11 +49,7 @@
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int i = 0, ii = 0, x = 0, sl = 0;
-	spec_t specs[] = {
-		{ "c", print_char },
-		{ "s", print_str }
-	};
+	int i = 0, sl = 0;
 
 	va_start(ap, format);
 
@@ -28,75 +58,27 @@ int _printf(const char *format, ...)
 
 	while (format[i])
 	{
-		ii = 0;
-
-		if (format[i] == '%' && x == 0)
+		if (format[i] == '%' && (!(format[i + 1]) || format[i + 1] == '%'))
 		{
-			x = 1;
+			putchar('%');
+			i++;
+			sl++;
 		}
-		else if (x == 1)
+		else if (format[i] == '%')
 		{
-			while (ii < 2)
-			{
-				if (format[i] == specs[ii].spec)
-				{
-					specs[ii].f(ap);
-					sl = sl + specs[ii].f(ap);
-					x = 2;
-				}
-				ii++;
-			}
-			
-			if (x != 2)
-			{ putchar(format[i]); }
-			x = 0;
+			sl += check_spec(ap, format[i + 1]);
+			i++;
 		}
 		else
-		{ putchar(format[i]); }
+		{
+			putchar(format[i]);
+			sl++;
+		}
 
 		i++;
-		sl++;
 	}
 
 	va_end(ap);
 
 	return(sl);
-}
-
-
-/**
- * print_char - prints a char
- *
- * @ap: a variadic argument
- *
- * Return: int
- */
-int print_char(va_list ap)
-{
-	putchar(va_arg(ap, char));
-	return (-1);
-}
-
-/**
- * print_str - prints a string
- *
- * @ap: a variadic argument
- *
- * Return: int
- */
-int print_str(va_list ap)
-{
-	int sl = 0;
-	char *str;
-
-	str = va_arg(ap, char *);
-
-	while (str[sl])
-	{
-		putchar(va_arg(ap[sl], char));
-		sl++;
-	}
-
-	sl = sl - 2;
-	return (sl);
 }
