@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdarg.h>
+#include <math.h>
 #include "main.h"
 
 /**
@@ -65,6 +66,45 @@ int print_perc(va_list ap)
  *
  * Return: int, number of chars printed
  */
-int print_int(int ap)
+int print_int(va_list ap)
 {
+	int i, ii, a = 0, n, not_n, x, sl = 0;
+
+	n = va_arg(ap, int);
+
+	if (n < 0)
+	{
+		putchar('-');
+		n = n * -1;
+		a = 1;
+	}
+
+	not_n = n;
+
+	while (not_n > 0)
+	{
+		sl++;
+		not_n = (not_n / 10);
+	}
+
+	if (sl == 0)
+	{ return (0); }
+
+	for (i = sl - 1; i >= 0; i--)
+	{
+		x = 1;
+
+		for (ii = 0; ii < i; ii++)
+		{
+			x = x * 10;
+		}
+
+		putchar((n / x) + '0');
+		n = (n % x);
+	}
+
+	if (a == 1)
+	{ sl = sl + 1; }
+
+	return (sl);
 }
