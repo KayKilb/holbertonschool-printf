@@ -17,10 +17,14 @@ int check_spec(va_list ap, char c)
 	int i = 0;
 	spec_t specs[] = {
 		{ "c", print_char },
-		{ "s", print_str }
+		{ "s", print_str },
+		{ "%", print_perc },
+		{ "\0", print_perc },
+		{ "d", print_int },
+		{ "i", print_int }
 	};
 
-	while (i < 2)
+	while (i < 6)
 	{
 		if (*specs[i].spec == c)
 		{ return (specs[i].f(ap)); }
@@ -56,15 +60,9 @@ int _printf(const char *format, ...)
 
 	while (format[i])
 	{
-		if (format[i] == '%' && (!(format[i + 1]) || format[i + 1] == '%'))
+		if (format[i] == '%')
 		{
-			putchar('%');
-			i++;
-			sl++;
-		}
-		else if (format[i] == '%')
-		{
-			sl += check_spec(ap, format[i + 1]);
+			sl = sl + check_spec(ap, format[i + 1]);
 			i++;
 		}
 		else
@@ -77,6 +75,8 @@ int _printf(const char *format, ...)
 	}
 
 	va_end(ap);
+
+	printf("^%d\n", sl);
 
 	return (sl);
 }
