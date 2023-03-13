@@ -44,13 +44,7 @@ int print_str(va_list ap)
 }
 
 /**
- * print_int - prints an int
- *
- * @ap: va_list??, arge from printf
- *
- * Return: int, number of chars printed
- *
- * int print_int(int ap)
- * {
- * }
-*/
+ * print_int - prints integers
+ * @ap: va_list that holds arguments from main function
+ * Return: number of integers printed
+ */
