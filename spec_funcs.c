@@ -45,12 +45,6 @@ int print_str(va_list ap)
 }
 
 /**
-<<<<<<< HEAD
- * print_int - prints integers
- * @ap: va_list that holds arguments from main function
- * Return: number of integers printed
- */
-=======
  * print_perc - prints %
  *
  * @ap: va_list, arg from printf
