@@ -17,7 +17,7 @@ int print_char(va_list ap)
 	int i;
 	char null[5] = "(nil)";
 
-	if (va_arg(ap, int) == NULL)
+	if (va_arg(ap, int) == '\0')
 	{
 		for (i = 0; i < 5; i++)
 		{ putchar(null[i]); }
