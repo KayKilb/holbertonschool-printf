@@ -56,7 +56,21 @@ int print_str(va_list ap)
 }
 
 /**
- * print_null - prints %
+ * print_perc - prints %
+ *
+ * @ap: va_list, arg from printf
+ *
+ * Return: int, number of chars printed (should be 1)
+ */
+int print_perc(va_list ap)
+{
+	(void) ap;
+	putchar('%');
+	return (1);
+}
+
+/**
+ * print_null - prints nothing
  *
  * @ap: va_list, arg from printf
  *

@@ -21,6 +21,7 @@ typedef struct spec
 
 int print_char(va_list ap);
 int print_str(va_list ap);
+int print_perc(va_list ap);
 int print_null(va_list ap);
 int print_int(va_list ap);
 
