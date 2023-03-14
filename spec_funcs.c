@@ -70,19 +70,6 @@ int print_perc(va_list ap)
 }
 
 /**
- * print_null - prints nothing
- *
- * @ap: va_list, arg from printf
- *
- * Return: int, number of chars printed (should be 0)
- */
-int print_null(va_list ap)
-{
-	(void) ap;
-	return (0);
-}
-
-/**
  * print_int - prints an int
  *
  * @ap: va_list, arg from printf
