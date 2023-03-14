@@ -15,16 +15,17 @@
 int print_char(va_list ap)
 {
 	int i;
+	char c = va_list(ap, int);
 	char null[5] = "(nil)";
 
-	if (va_arg(ap, int) == '\0')
+	if (c == '\0')
 	{
 		for (i = 0; i < 5; i++)
 		{ putchar(null[i]); }
 		return (5);
 	}
 
-	putchar(va_arg(ap, int));
+	putchar(c);
 	return (1);
 }
 
