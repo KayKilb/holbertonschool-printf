@@ -62,13 +62,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == '%')
-			{
-				putchar('%');
-				sl++;
-			}
-			else if (format[i + 1] != '\0')
-			{ sl = sl + check_spec(ap, format[i + 1]); }
+			sl = sl + check_spec(ap, format[i + 1]);
 			i++;
 		}
 		else

@@ -65,6 +65,7 @@ int print_str(va_list ap)
 int print_perc(va_list ap)
 {
 	(void) ap;
+
 	putchar('%');
 	return (1);
 }
