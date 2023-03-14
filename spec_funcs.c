@@ -15,7 +15,7 @@
 int print_char(va_list ap)
 {
 	int i;
-	char c = va_list(ap, int);
+	char c = va_arg(ap, int);
 	char null[5] = "(nil)";
 
 	if (c == '\0')
@@ -25,7 +25,7 @@ int print_char(va_list ap)
 		return (5);
 	}
 
-	putchar(c);
+	putchar(va_arg(ap, int));
 	return (1);
 }
 
