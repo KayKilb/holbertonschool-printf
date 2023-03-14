@@ -14,6 +14,16 @@
  */
 int print_char(va_list ap)
 {
+	int i;
+	char null[5] = "(nil)";
+
+	if (va_arg(ap, int) == NULL)
+	{
+		for (i = 0; i < 5; i++)
+		{ putchar(null[i]); }
+		return (5);
+	}
+
 	putchar(va_arg(ap, int));
 	return (1);
 }
@@ -45,18 +55,16 @@ int print_str(va_list ap)
 }
 
 /**
- * print_perc - prints %
+ * print_null - prints %
  *
  * @ap: va_list, arg from printf
  *
- * Return: int, number of chars printed (should be 1)
+ * Return: int, number of chars printed (should be 0)
  */
-int print_perc(va_list ap)
+int print_null(va_list ap)
 {
 	(void) ap;
-
-	putchar('%');
-	return (1);
+	return (0);
 }
 
 /**
