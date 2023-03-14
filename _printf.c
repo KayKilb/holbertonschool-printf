@@ -19,7 +19,7 @@ int check_spec(va_list ap, char c)
 		{ "c", print_char },
 		{ "s", print_str },
 		{ "%", print_perc },
-		{ "\0", print_perc },
+		{ "\0", print_null },
 		{ "d", print_int },
 		{ "i", print_int }
 	};
